@@ -1,0 +1,141 @@
+:root{
+  --bg-1: #f7fafc;
+  --pastel-1: #f6f0ff;
+  --pastel-2: #fff8f0;
+  --card: rgba(255,255,255,0.75);
+  --accent: #6b46c1;
+  --muted: #6b7280;
+}
+
+html,body{height:100%;}
+
+body{
+  margin:0;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: linear-gradient(135deg, var(--pastel-1), var(--pastel-2));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:32px;
+  box-sizing:border-box;
+}
+
+.container{
+  width:100%;
+  max-width:820px;
+  background: var(--card);
+  border-radius:16px;
+  box-shadow: 0 8px 30px rgba(99,102,241,0.08);
+  padding:20px;
+  backdrop-filter: blur(6px) saturate(120%);
+  border: 1px solid rgba(255,255,255,0.6);
+}
+
+header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:12px;
+}
+
+header h1{
+  font-size:20px;
+  margin:0;
+  color:#241b3d;
+}
+
+header p{
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+}
+
+#chat-output{
+  min-height:360px;
+  max-height:60vh;
+  overflow:auto;
+  padding:16px;
+  border-radius:12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.5));
+  border: 1px solid rgba(0,0,0,0.04);
+  box-sizing:border-box;
+}
+
+.msg{
+  display:flex;
+  margin-bottom:10px;
+  gap:8px;
+}
+
+.msg .bubble{
+  padding:10px 14px;
+  border-radius:12px;
+  max-width:78%;
+  line-height:1.35;
+}
+
+.msg.user{justify-content:flex-end}
+
+.msg.user .bubble{
+  background:linear-gradient(90deg,#eef2ff,#f3e8ff);
+  color:#2b2b2b;
+  border-radius:12px 12px 8px 12px;
+}
+
+.msg.bot .bubble{
+  background:#fff;
+  border:1px solid rgba(0,0,0,0.04);
+  color:#111;
+  border-radius:12px 12px 12px 8px;
+}
+
+form#composer{
+  display:flex;
+  gap:8px;
+  margin-top:14px;
+}
+
+input#msg{
+  flex:1;
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,0.06);
+  font-size:15px;
+  outline:none;
+}
+
+input#msg:focus{
+  box-shadow:0 4px 18px rgba(99,102,241,0.08);
+}
+
+button#send{
+  background:var(--accent);
+  color:white;
+  border:none;
+  padding:10px 16px;
+  border-radius:12px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+button#send[disabled]{
+  opacity:0.6;
+  cursor:not-allowed;
+}
+
+.meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:12px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+@media (max-width:520px){
+  .container{padding:14px;border-radius:12px}
+  header h1{font-size:18px}
+  #chat-output{min-height:300px}
+}
