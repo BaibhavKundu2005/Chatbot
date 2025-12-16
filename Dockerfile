@@ -10,12 +10,12 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements and install
-COPY backend/requirements.txt ./backend/requirements.txt
+COPY api/requirements.txt ./api/requirements.txt
 RUN python -m pip install --upgrade pip
-RUN pip install -r backend/requirements.txt
+RUN pip install -r api/requirements.txt
 
 # Copy source
-COPY backend ./backend
+COPY api ./api
 COPY frontend ./frontend
 
 # Don't copy local .env into image; set secrets via host/env provider
@@ -25,4 +25,4 @@ ENV PORT=8000
 EXPOSE ${PORT}
 
 # Use gunicorn with uvicorn worker for production
-CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "backend.app:app", "--bind", "0.0.0.0:8000", "--workers", "1"]
+CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "api.chat:app", "--bind", "0.0.0.0:8000", "--workers", "1"]
