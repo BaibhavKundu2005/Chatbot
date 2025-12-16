@@ -11,7 +11,9 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 
 # Load local .env for development (safe to use locally; ensure .env is in .gitignore)
-load_dotenv()
+# Explicitly load the .env file located next to this module so running from
+# a different working directory still finds it (useful for uvicorn/module runs).
+load_dotenv(os.path.join(os.path.dirname(__file__), ".env"))
 
 # ---------- Configuration ----------
 FRONTEND_DIR = os.getenv("FRONTEND_DIR", "../frontend")
