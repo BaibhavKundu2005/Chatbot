@@ -22,7 +22,9 @@ COPY frontend ./frontend
 ENV PYTHONUNBUFFERED=1
 ENV PORT=8000
 
+# Expose the port (can be overridden by Render with $PORT at runtime)
 EXPOSE ${PORT}
 
-# Use gunicorn with uvicorn worker for production
-CMD ["gunicorn", "-k", "uvicorn.workers.UvicornWorker", "api.chat:app", "--bind", "0.0.0.0:8000", "--workers", "1"]
+# Run with Uvicorn directly and expand $PORT at container start.
+# Use a shell form so environment variables are substituted.
+CMD ["sh", "-c", "python -m uvicorn api.chat:app --host 0.0.0.0 --port ${PORT:-8000}"]
