@@ -219,11 +219,3 @@ async def health():
 # Serve the static frontend directory (index.html served at root)
 app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
 
-
-if __name__ == "__main__":
-    # convenience dev runner
-    import uvicorn
-
-    port = int(os.getenv("PORT", "8000"))
-    uvicorn.run(app, host="127.0.0.1", port=8000)
-
