@@ -39,7 +39,7 @@ This repository contains a minimal local/chat demo that integrates a small front
 
 **Important environment variables**
 
-- `GEMINI_API_KEY` or `GOOGLE_API_KEY` — required to call the Gemini REST API. Must be set in production environment (do not commit keys to the repo).
+- `GEMINI_API_KEY` or `GOOGLE_API_KEY` — required to call the Gemini REST API.
 - `MODEL` — model name to call, e.g. `gemini-2.5-flash` (defaults present in code).
 - `MAX_OUTPUT_TOKENS` — max tokens returned from the model.
 - `TEMPERATURE` — sampling temperature.
