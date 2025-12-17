@@ -101,17 +101,3 @@ The app will listen on the port you mapped (default 8000).
 
 - POST `/api/chat` — request body: `{ "message": "...", "history": [...] }` returns `{ "reply": "..." }`.
 - GET `/api/health` — simple health/status response.
-
-**Troubleshooting**
-
-- 405 Method Not Allowed when POSTing: ensure the backend route exists and static-file mounts are not intercepting the `/api` path (mount static files after API routes).
-- 500 Internal Server Error: confirm `GEMINI_API_KEY` is set and reachable from your environment. In containers and cloud platforms set secrets via the provider's env var settings.
-- Docker build errors copying `backend/` vs `api/`: this repo uses `api/` as the backend folder; ensure your Dockerfile references `api/requirements.txt` and copies `api/`.
-
-If you'd like, I can also:
-- add a `docker-compose.yml` for local dev, or
-- produce a short `deploy-to-render.md` with exact Render settings and start command.
-
----
-
-Last updated: 2025-12-17
